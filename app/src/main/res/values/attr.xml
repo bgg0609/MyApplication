@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 通过标题栏属性 -->
+    <declare-styleable name="CommonHeaderBarView">
+
+        <!-- 标题文字 -->
+        <attr name="mid_text" format="reference|string" />
+        <!-- 标题图标 -->
+        <attr name="mid_icon" format="reference" />
+        <!-- 左边文字 -->
+        <attr name="left_text" format="reference|string" />
+        <!-- 左边图标 -->
+        <attr name="left_icon" format="reference" />
+        <!-- 右边文字 -->
+        <attr name="right_text" format="reference|string" />
+        <!-- 右边图标 -->
+        <attr name="right_icon" format="reference" />
+        <!-- 左边点击事件 -->
+        <attr name="left_onClick" format="string" />
+        <!-- 右边点击事件 -->
+        <attr name="right_onClick" format="string" />
+        <!-- 标题点击事件 -->
+        <attr name="mid_onClick" format="string" />
+        <!-- 左边文字颜色 -->
+        <attr name="left_textColor" format="reference|color" />
+        <!-- 中间标题的文字颜色 -->
+        <attr name="mid_textColor" format="reference|color" />
+        <!-- 右边文字的颜色 -->
+        <attr name="right_textColor" format="reference|color" />
+        <!-- 左边文字的大小 -->
+        <attr name="left_textSize" format="reference|dimension" />
+        <!-- 中间文字的大小 -->
+        <attr name="mid_textSize" format="reference|dimension" />
+        <!-- 右边文字的大小 -->
+        <attr name="right_textSize" format="reference|dimension" />
+        <!-- 所有标题的颜色 -->
+        <attr name="all_textColor" format="reference|color" />
+        <!-- 所有文字的大小 -->
+        <attr name="all_textSize" format="reference|dimension" />
+
+        <!-- 左边图标宽度 -->
+        <attr name="left_icon_width" format="reference|dimension" />
+        <!-- 左边图标高度 -->
+        <attr name="left_icon_height" format="reference|dimension" />
+        <!-- 中间图标宽度 -->
+        <attr name="mid_icon_width" format="reference|dimension" />
+        <!-- 中间图标高度 -->
+        <attr name="mid_icon_height" format="reference|dimension" />
+        <!-- 右边图标宽度 -->
+        <attr name="right_icon_width" format="reference|dimension" />
+        <!-- 右边图标高度 -->
+        <attr name="right_icon_height" format="reference|dimension" />
+
+        <!-- 右边第二个图标 -->
+        <attr name="right2_icon" format="reference" />
+        <!-- 右边第二个图标宽度 -->
+        <attr name="right2_icon_width" format="reference|dimension" />
+        <!-- 右边第二个图标高度 -->
+        <attr name="right2_icon_height" format="reference|dimension" />
+        <!-- 右边第二个点击事件 -->
+        <attr name="right2_onClick" format="string" />
+    </declare-styleable>
+    <declare-styleable name="ProgressWheel">
+        <attr name="pwText" format="string" />
+        <attr name="pwTextColor" format="color" />
+        <attr name="pwTextSize" format="dimension" />
+        <attr name="pwBarColor" format="color" />
+        <attr name="pwRimColor" format="color" />
+        <attr name="pwRimWidth" format="dimension" />
+        <attr name="pwSpinSpeed" format="dimension" />
+        <attr name="pwDelayMillis" format="integer" />
+        <attr name="pwCircleColor" format="color" />
+        <attr name="pwRadius" format="dimension" />
+        <attr name="pwBarWidth" format="dimension" />
+        <attr name="pwBarLength" format="dimension" />
+        <attr name="pwContourColor" format="color" />
+        <attr name="pwContourSize" format="dimension" />
+    </declare-styleable>
+
+    <!-- 自定义环形比例View -->
+    <declare-styleable name="CircleProgressBar">
+        <attr name="heartColor" format="color" />
+        <attr name="heartClickedColor" format="color" />
+        <attr name="skinStartColor" format="color" />
+        <attr name="skinEndColor" format="color" />
+        <attr name="skinDepth" format="integer" />
+        <attr name="percent" format="float" />
+        <attr name="duration" format="integer" />
+        <attr name="centerTextColor" format="color" />
+        <attr name="IsClockwise" format="boolean" />
+    </declare-styleable>
+
+    <!-- HorizontalListView -->
+    <declare-styleable name="HorizontalListView">
+        <attr name="divider_Width" format="dimension" />
+        <attr name="android:divider" />
+        <attr name="android:requiresFadingEdge" />
+        <attr name="android:fadingEdgeLength" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="PagerSlidingTabStrip">
+        <attr name="pstsIndicatorColor" format="color" />
+        <attr name="pstsUnderlineColor" format="color" />
+        <attr name="pstsDividerColor" format="color" />
+        <attr name="pstsIndicatorHeight" format="dimension" />
+        <attr name="pstsUnderlineHeight" format="dimension" />
+        <attr name="pstsDividerPadding" format="dimension" />
+        <attr name="pstsTabPaddingLeftRight" format="dimension" />
+        <attr name="pstsScrollOffset" format="dimension" />
+        <attr name="pstsTabBackground" format="reference" />
+        <attr name="pstsShouldExpand" format="boolean" />
+        <attr name="pstsTextAllCaps" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontalSpacing" format="dimension" />
+        <attr name="verticalSpacing" format="dimension" />
+        <attr name="orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="debugDraw" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_LayoutParams">
+        <attr name="layout_newLine" format="boolean" />
+        <attr name="layout_horizontalSpacing" format="dimension" />
+        <attr name="layout_verticalSpacing" format="dimension" />
+    </declare-styleable>
+
+</resources>

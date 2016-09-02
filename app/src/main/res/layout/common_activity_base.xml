@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <bgg.com.myapplication.common.customview.CommonHeaderBarView
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#4f4f4f"
+        app:all_textColor="@drawable/common_bar_text_color_selector"
+        app:left_icon="@drawable/nav_btn_return_white"
+        app:left_onClick="onLeftClick"
+        app:mid_textSize="@dimen/text_size_18sp"
+        app:right2_onClick="onRightClick2"
+        app:right_icon_height="15dp"
+        app:right_icon_width="15dp"
+        app:right_onClick="onRightClick" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/headerView">
+
+        <LinearLayout
+            android:id="@+id/layout_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/ReflashLayout"
+            layout="@layout/common_http_error_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

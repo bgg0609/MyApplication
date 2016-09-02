@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="text_net_error_color">#333333</color>
+    <color name="text_net_retry_color">#2bc5bc</color>
+    <color name="list_divider_color">#cccccc</color>
+    <color name="text_white">#ffffff</color>
+    <color name="text_white_pressed">#99ffffff</color>
+    <color name="footer_tab_bg_color">#f6f6f8</color>
+    <color name="bottom_text_color_pressed">#2bc5bc</color>
+    <color name="bottom_text_color_normal">#333333</color>
+    <color name="transparent">#00000000</color>
+    <color name="city_item_color">#6a6e6b</color>
+</resources>
