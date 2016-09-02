@@ -14,4 +14,8 @@
     <color name="bottom_text_color_normal">#333333</color>
     <color name="transparent">#00000000</color>
     <color name="city_item_color">#6a6e6b</color>
+    <color name="swipe_color_1">#ffcccc</color>
+    <color name="swipe_color_2">#ff9966</color>
+    <color name="swipe_color_3">#ff6666</color>
+    <color name="swipe_color_4">#ff0033</color>
 </resources>
