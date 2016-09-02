@@ -6,18 +6,18 @@ import com.alibaba.fastjson.JSON;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.OkHttpStack;
 import com.android.volley.toolbox.Volley;
-import org.json.JSONException;
+
 import org.json.JSONObject;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import bgg.com.commlibrary.http.GJKHttpRequest;
+import bgg.com.commlibrary.http.NNHttpRequest;
 import bgg.com.myapplication.MyApplication;
 
 /**
  * HTTP 客户端，包含POST,GET,DELETE,PUT,PATCH请求
  */
-public class ABOHttpRequest extends GJKHttpRequest {
+public class ABOHttpRequest extends NNHttpRequest {
 
 
 	private HttpEventListener httpEventListener;
@@ -110,11 +110,11 @@ public class ABOHttpRequest extends GJKHttpRequest {
 
 	public static RequestQueue getRequestQueue(Context context) {
 
-		if (GJKHttpRequest.queue == null) {
-			GJKHttpRequest.queue = Volley.newRequestQueue(context, new OkHttpStack());
+		if (NNHttpRequest.queue == null) {
+			NNHttpRequest.queue = Volley.newRequestQueue(context, new OkHttpStack());
 		}
 
-		return GJKHttpRequest.queue;
+		return NNHttpRequest.queue;
 	}
 
 	/**
