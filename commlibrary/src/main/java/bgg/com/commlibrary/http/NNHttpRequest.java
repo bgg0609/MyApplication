@@ -22,7 +22,7 @@ import bgg.com.commlibrary.utils.HttpUtils;
  * @author robert
  *
  */
-public abstract class GJKHttpRequest {
+public abstract class NNHttpRequest {
 	public static RequestQueue queue;
 	private String host = "";
 
@@ -42,14 +42,14 @@ public abstract class GJKHttpRequest {
 		this.requestMethod = requestMethod;
 	}
 
-	public GJKHttpRequest(Context context, String host, String webAPI) {
+	public NNHttpRequest(Context context, String host, String webAPI) {
 		this.webAPI = webAPI;
 		this.host = host;
 		this.context = context;
 		this.params = new JSONObject();
 
 		if (queue == null) {
-			synchronized (GJKHttpRequest.class) {
+			synchronized (NNHttpRequest.class) {
 				if(queue == null){
 					queue = Volley.newRequestQueue(this.context, new OkHttpStack());
 				}
