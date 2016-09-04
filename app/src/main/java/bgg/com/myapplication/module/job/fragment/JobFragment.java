@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,8 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bgg.com.myapplication.R;
+import bgg.com.myapplication.common.customview.NRecyclerView;
+import bgg.com.myapplication.common.customview.NSwipeRefreshLayout;
 import bgg.com.myapplication.common.fragment.BaseFragment;
-import bgg.com.myapplication.module.job.adapter.DividerItemDecoration;
 import bgg.com.myapplication.module.job.adapter.RefreshFootAdapter;
 import bgg.com.myapplication.module.job.model.Job;
 
@@ -26,11 +26,10 @@ import bgg.com.myapplication.module.job.model.Job;
  */
 public class JobFragment extends BaseFragment {
 
-    private RecyclerView listview;
+    private NRecyclerView nRecyclerView;
     private RefreshFootAdapter adapter;
-    private SwipeRefreshLayout swipeRefreshLayout;
+    private NSwipeRefreshLayout swipeRefreshLayout;
     private List<Job> jobs = new ArrayList<>();
-    private LinearLayoutManager linearLayoutManager;
     private int lastVisibleItem;
 
     @Nullable
@@ -43,9 +42,8 @@ public class JobFragment extends BaseFragment {
 
     private void initView(View view) {
 
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
-        swipeRefreshLayout.setColorSchemeResources(R.color.swipe_color_1, R.color.swipe_color_2, R.color.swipe_color_3, R.color.swipe_color_4);
-        swipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
+        swipeRefreshLayout = (NSwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -55,15 +53,9 @@ public class JobFragment extends BaseFragment {
             }
         });
 
-        listview = (RecyclerView) view.findViewById(R.id.lvJob);
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-        linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
-        listview.setLayoutManager(linearLayoutManager);
-        //添加分隔线
-        listview.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.HORIZONTAL_LIST));
-        adapter = new RefreshFootAdapter(getActivity(), jobs);
-        listview.setAdapter(adapter);
-        listview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        nRecyclerView = (NRecyclerView) view.findViewById(R.id.lvJob);
+        nRecyclerView.setOrientation(OrientationHelper.VERTICAL);
+        nRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
@@ -79,9 +71,12 @@ public class JobFragment extends BaseFragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+                lastVisibleItem = nRecyclerView.findLastVisibleItemPosition();
             }
         });
+
+        adapter = new RefreshFootAdapter(getActivity(), jobs);
+        nRecyclerView.setAdapter(adapter);
 
         swipeRefreshLayout.postDelayed(new Runnable() {
             @Override

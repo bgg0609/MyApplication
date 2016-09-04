@@ -4,18 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <bgg.com.myapplication.common.customview.NSwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.RecyclerView
+        <bgg.com.myapplication.common.customview.NRecyclerView
             android:id="@+id/lvJob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@color/list_divider_color"
             android:scrollbars="vertical" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </bgg.com.myapplication.common.customview.NSwipeRefreshLayout>
 
 
 </LinearLayout>

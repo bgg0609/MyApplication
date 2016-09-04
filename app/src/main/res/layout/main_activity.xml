@@ -37,10 +37,10 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:drawablePadding="3dp"
-                android:drawableTop="@drawable/bottom_tab_job_seletor"
+                android:drawableTop="@drawable/bottom_tab_job_selector"
                 android:gravity="center"
                 android:text="@string/bottom_tab_job"
-                android:textColor="@drawable/bottom_tab_text_seletor"
+                android:textColor="@drawable/bottom_tab_text_selector"
                 android:textSize="@dimen/text_size_12sp" />
 
             <TextView
@@ -51,10 +51,10 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:drawablePadding="3dp"
-                android:drawableTop="@drawable/bottom_tab_msg_seletor"
+                android:drawableTop="@drawable/bottom_tab_msg_selector"
                 android:gravity="center"
                 android:text="@string/bottom_tab_msg"
-                android:textColor="@drawable/bottom_tab_text_seletor"
+                android:textColor="@drawable/bottom_tab_text_selector"
                 android:textSize="@dimen/text_size_12sp" />
 
             <TextView
@@ -65,10 +65,10 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:drawablePadding="3dp"
-                android:drawableTop="@drawable/bottom_tab_mine_seletor"
+                android:drawableTop="@drawable/bottom_tab_mine_selector"
                 android:gravity="center"
                 android:text="@string/bottom_tab_mine"
-                android:textColor="@drawable/bottom_tab_text_seletor"
+                android:textColor="@drawable/bottom_tab_text_selector"
                 android:textSize="@dimen/text_size_12sp" />
 
         </LinearLayout>

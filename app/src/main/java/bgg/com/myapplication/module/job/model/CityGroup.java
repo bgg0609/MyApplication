@@ -6,9 +6,20 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/9/2 0002.
  */
-public class CityGroup implements Serializable{
+public class CityGroup implements Serializable {
+
+    private String letter;
     private String name;
     private List<City> cityList;
+
+    public String getLetter() {
+        return letter;
+    }
+
+    public void setLetter(String letter) {
+        this.letter = letter;
+    }
+
 
     public String getName() {
         return name;

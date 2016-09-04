@@ -2,18 +2,25 @@ package bgg.com.myapplication.module.job.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import bgg.com.myapplication.R;
 import bgg.com.myapplication.common.OnceOnClickListener;
 import bgg.com.myapplication.common.activity.BaseActivity;
 import bgg.com.myapplication.common.customview.FlowLayout;
+import bgg.com.myapplication.module.job.view.LetterListView;
+import bgg.com.myapplication.module.job.adapter.CharAdapter;
 import bgg.com.myapplication.module.job.adapter.CityListAdapter;
 import bgg.com.myapplication.module.job.model.City;
 import bgg.com.myapplication.module.job.model.CityGroup;
@@ -29,17 +36,22 @@ public class CitySelectActivity extends BaseActivity {
     private List<CityGroup> cityGroups = new ArrayList<>();
     private ListView lvCity;
     private CityListAdapter adapter;
+    private LetterListView letterListView;
+    private LinearLayout char_layout;
+    private ListView char_list;
+    private TextView char_text;
+    private List<String> letters = new ArrayList<>();
+    private Map<String, ArrayList<CityGroup>> chars = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
-        setContentView(R.layout.job_activity_city_select);
-        setTitle("城市选择");
-        flSelectCity = (FlowLayout) findViewById(R.id.flSelectCity);
-        lvCity = (ListView) findViewById(R.id.lvCity);
-
+        initView();
+        initData();
         updateSelectCityLayout();
+    }
 
+    private void initData() {
         //测试数据
         CityGroup cg = new CityGroup();
         cg.setName("热门城市");
@@ -66,6 +78,7 @@ public class CitySelectActivity extends BaseActivity {
         city.setName("南京");
         citys.add(city);
         cg.setCityList(citys);
+        cg.setLetter("R");
         cityGroups.add(cg);
 
         cg = new CityGroup();
@@ -90,6 +103,32 @@ public class CitySelectActivity extends BaseActivity {
         city.setName("中山");
         citys.add(city);
         cg.setCityList(citys);
+        cg.setLetter("G");
+        cityGroups.add(cg);
+
+        cg = new CityGroup();
+        cg.setName("广西");
+        citys = new ArrayList<>();
+        city = new City();
+        city.setName("广州");
+        citys.add(city);
+        city = new City();
+        city.setName("深圳");
+        citys.add(city);
+        city = new City();
+        city.setName("佛山");
+        citys.add(city);
+        city = new City();
+        city.setName("珠海");
+        citys.add(city);
+        city = new City();
+        city.setName("东莞");
+        citys.add(city);
+        city = new City();
+        city.setName("中山");
+        citys.add(city);
+        cg.setCityList(citys);
+        cg.setLetter("G");
         cityGroups.add(cg);
 
 
@@ -103,6 +142,7 @@ public class CitySelectActivity extends BaseActivity {
         city.setName("扬州");
         citys.add(city);
         cg.setCityList(citys);
+        cg.setLetter("Z");
         cityGroups.add(cg);
 
         cg = new CityGroup();
@@ -127,6 +167,82 @@ public class CitySelectActivity extends BaseActivity {
         city.setName("永州");
         citys.add(city);
         cg.setCityList(citys);
+        cg.setLetter("H");
+        cityGroups.add(cg);
+
+        cg = new CityGroup();
+        cg.setName("湖北");
+        citys = new ArrayList<>();
+        city = new City();
+        city.setName("长沙");
+        citys.add(city);
+        city = new City();
+        city.setName("岳阳");
+        citys.add(city);
+        city = new City();
+        city.setName("株洲");
+        citys.add(city);
+        city = new City();
+        city.setName("衡阳");
+        citys.add(city);
+        city = new City();
+        city.setName("郴州");
+        citys.add(city);
+        city = new City();
+        city.setName("永州");
+        citys.add(city);
+        cg.setCityList(citys);
+        cg.setLetter("H");
+        cityGroups.add(cg);
+
+        cg = new CityGroup();
+        cg.setName("河南");
+        citys = new ArrayList<>();
+        city = new City();
+        city.setName("长沙");
+        citys.add(city);
+        city = new City();
+        city.setName("岳阳");
+        citys.add(city);
+        city = new City();
+        city.setName("株洲");
+        citys.add(city);
+        city = new City();
+        city.setName("衡阳");
+        citys.add(city);
+        city = new City();
+        city.setName("郴州");
+        citys.add(city);
+        city = new City();
+        city.setName("永州");
+        citys.add(city);
+        cg.setCityList(citys);
+        cg.setLetter("H");
+        cityGroups.add(cg);
+
+        cg = new CityGroup();
+        cg.setName("河北");
+        citys = new ArrayList<>();
+        city = new City();
+        city.setName("长沙");
+        citys.add(city);
+        city = new City();
+        city.setName("岳阳");
+        citys.add(city);
+        city = new City();
+        city.setName("株洲");
+        citys.add(city);
+        city = new City();
+        city.setName("衡阳");
+        citys.add(city);
+        city = new City();
+        city.setName("郴州");
+        citys.add(city);
+        city = new City();
+        city.setName("永州");
+        citys.add(city);
+        cg.setCityList(citys);
+        cg.setLetter("H");
         cityGroups.add(cg);
 
         adapter = new CityListAdapter(getActivity(), cityGroups);
@@ -142,6 +258,45 @@ public class CitySelectActivity extends BaseActivity {
             }
         });
         lvCity.setAdapter(adapter);
+
+        for (int i = 0; i < cityGroups.size(); i++) {
+            String str = cityGroups.get(i).getLetter();
+            if (!letters.contains(str))
+                letters.add(str);
+
+            if (chars.containsKey(str)) {
+                if (!chars.get(str).contains(cityGroups.get(i))) {
+                    chars.get(str).add(cityGroups.get(i));
+                }
+            } else {
+                ArrayList<CityGroup> firstNames = new ArrayList<>();
+                firstNames.add(cityGroups.get(i));
+                chars.put(str, firstNames);
+            }
+        }
+    }
+
+    private void initView() {
+        setContentView(R.layout.job_activity_city_select);
+        setTitle("城市选择");
+        flSelectCity = (FlowLayout) findViewById(R.id.flSelectCity);
+        lvCity = (ListView) findViewById(R.id.lvCity);
+        letterListView = (LetterListView) findViewById(R.id.letterListView);
+        char_layout = (LinearLayout) findViewById(R.id.char_layout);
+        char_list = (ListView) findViewById(R.id.char_list);
+        char_text = (TextView) findViewById(R.id.char_text);
+
+        letterListView.setOnTouchingLetterChangedListener(new LetterListViewListener());
+        lvCity.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (char_layout.isShown()) {
+                    char_layout.setVisibility(View.GONE);
+                }
+                return false;
+            }
+        });
     }
 
     protected void updateSelectCityLayout() {
@@ -164,6 +319,42 @@ public class CitySelectActivity extends BaseActivity {
                 });
 
                 flSelectCity.addView(itemView);
+            }
+        }
+    }
+
+    private class LetterListViewListener implements LetterListView.OnTouchingLetterChangedListener {
+
+        @SuppressWarnings("static-access")
+        @Override
+        public void onTouchingLetterChanged(final String s) {
+
+            if (letters.contains(s)) {
+                char_text.setText(s.toUpperCase());
+                final int index = letters.indexOf(s);
+                lvCity.setSelection(index);
+
+                final ArrayList<CityGroup> data = chars.get(s);
+                char_list.setAdapter(new CharAdapter(getActivity(), data));
+
+                char_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        CityGroup cg = data.get(position);
+                        for (int i = 0; i < cityGroups.size(); i++) {
+                            if (cg.getName().equals(cityGroups.get(i))) {
+                                lvCity.setSelection(i);
+                            }
+                        }
+                        char_layout.setVisibility(View.GONE);
+                    }
+                });
+
+                if (!char_layout.isShown()) {
+                    char_layout.setVisibility(View.VISIBLE);
+                }
             }
         }
     }

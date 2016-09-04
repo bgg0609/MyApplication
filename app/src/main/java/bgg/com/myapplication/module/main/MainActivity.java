@@ -10,15 +10,18 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import bgg.com.myapplication.R;
 import bgg.com.myapplication.common.OnceOnClickListener;
 import bgg.com.myapplication.common.activity.BaseActivity;
+import bgg.com.myapplication.common.customview.BottomDialog;
 import bgg.com.myapplication.common.customview.CommonHeaderBarView;
 import bgg.com.myapplication.module.job.activity.CitySelectActivity;
 import bgg.com.myapplication.module.job.fragment.JobFragment;
 import bgg.com.myapplication.module.mine.fragment.MineFragment;
 import bgg.com.myapplication.module.msg.fragment.MsgFragment;
+import bgg.com.myapplication.util.ToastUtils;
 
 public class MainActivity extends BaseActivity implements OnClickListener, OnPageChangeListener {
     public static final String TAG = "MainActivity";
@@ -46,6 +49,8 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnPag
         setContentView(R.layout.main_activity);
 
         swithTitleBar(PAGE_JOB);
+
+        getHeaderBarView().setRightText("筛选");
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
 
@@ -77,6 +82,33 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnPag
         mViewPager.addOnPageChangeListener(this);
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setCurrentItem(0);
+    }
+
+    @Override
+    public void onClickNavBarRightText() {
+        super.onClickNavBarRightText();
+        BottomDialog bottomDialog = new BottomDialog(getActivity());
+        bottomDialog.setTitle("工资水平");
+        final List<String> options = new ArrayList<>();
+        options.add("不限");
+        options.add("1000~2000");
+        options.add("2000~3000");
+        options.add("3000~4000");
+        options.add("4000~5000");
+        options.add("5000~6000");
+        options.add("7000~8000");
+        options.add("8000~9000");
+        options.add("10000~12000");
+        options.add("12000~15000");
+        options.add("15000以上");
+
+        bottomDialog.setOptions(options, new BottomDialog.CallBack() {
+            @Override
+            public void onItemSelect(int position) {
+                ToastUtils.showNewToast(getActivity(),options.get(position) );
+            }
+        });
+        bottomDialog.show();
     }
 
     @Override

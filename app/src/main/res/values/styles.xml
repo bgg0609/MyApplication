@@ -13,5 +13,37 @@
     </style>
 
 
-    <color name="app_background">#f1f1f1</color>
+    <!-- 提示对话框样式 -->
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <!-- 设置未浮动窗口 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 设置无边框 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 设置无标题 -->
+        <item name="android:windowBackground">@color/transparent</item>
+        <!-- 设置完全透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 设置屏幕变暗 -->
+    </style>
+
+    <style name="bottom_dialog_title">
+        <item name="android:textSize">@dimen/text_size_18sp</item>
+        <item name="android:textColor">@color/bottom_dialog_title</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="bottom_dialog_animstyle">
+        <item name="android:windowEnterAnimation">@anim/dialog_in_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_out_down</item>
+    </style>
+
+    <style name="bottom_dialog_option_item">
+        <item name="android:textSize">@dimen/text_size_15sp</item>
+        <item name="android:textColor">@color/bottom_dialog_option_item</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+
 </resources>

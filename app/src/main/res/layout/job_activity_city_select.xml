@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <bgg.com.myapplication.module.job.view.LetterListView
+        android:id="@+id/letterListView"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp" />
+
     <LinearLayout
+        android:id="@+id/llSelectCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/letterListView"
         android:minHeight="60dp"
         android:orientation="vertical"
         android:paddingLeft="12dp"
@@ -30,11 +40,51 @@
 
     </LinearLayout>
 
+
     <ListView
         android:id="@+id/lvCity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@id/llSelectCity"
+        android:layout_toLeftOf="@id/letterListView"
         android:divider="@null"
         android:dividerHeight="10dp" />
 
-</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/char_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@id/letterListView"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/char_text"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@color/color_green"
+            android:gravity="center"
+            android:text="A"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_15sp" />
+
+        <ListView
+            android:id="@+id/char_list"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@color/list_divider_color"
+            android:dividerHeight="0.5dp"
+            android:scrollbars="none" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/list_divider_color" />
+    </LinearLayout>
+
+</RelativeLayout>

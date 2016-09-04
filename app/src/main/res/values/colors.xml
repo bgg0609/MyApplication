@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="app_background">#f1f1f1</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
@@ -18,4 +19,11 @@
     <color name="swipe_color_2">#ff9966</color>
     <color name="swipe_color_3">#ff6666</color>
     <color name="swipe_color_4">#ff0033</color>
+
+    <color name="bottom_dialog_title">#383741</color>
+    <color name="bottom_dialog_option_item">#666666</color>
+    <color name="bottom_option_pressed">#cccccc</color>
+    <color name="color_green">#31b468</color>
+    <color name="text_color_break">#333333</color>
+
 </resources>

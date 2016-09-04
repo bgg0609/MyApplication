@@ -57,10 +57,6 @@ public class BaseActivity extends FragmentActivity implements ABOHttpRequest.Htt
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
         initContentView();
-
-        // if (Build.VERSION.SDK_INT >= 19) {
-        // setTranslucentStatus(true);
-        // }
     }
 
 
