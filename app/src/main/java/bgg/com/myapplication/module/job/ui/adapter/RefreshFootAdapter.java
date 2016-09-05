@@ -1,4 +1,4 @@
-package bgg.com.myapplication.module.job.adapter;
+package bgg.com.myapplication.module.job.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,18 +11,25 @@ import java.util.List;
 
 import bgg.com.myapplication.R;
 import bgg.com.myapplication.common.customview.RoundedImageView;
-import bgg.com.myapplication.module.job.model.Job;
+import bgg.com.myapplication.module.job.model.entity.Job;
 
 /**
  * Created by Administrator on 2016/9/2 0002.
  */
 public class RefreshFootAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
     //上拉加载更多
     public static final int PULLUP_LOAD_MORE = 0;
+
     //正在加载中
     public static final int LOADING_MORE = 1;
+
+    //没有更多数据
+    public static final int NO_MORE_DATA = 2;
+
+
     //上拉加载更多状态-默认为0
-    private int load_more_status = 0;
+    private int loadMoreStatus = 0;
     private LayoutInflater mInflater;
     private List<Job> jobs = null;
 
@@ -34,6 +41,10 @@ public class RefreshFootAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public RefreshFootAdapter(Context context, List<Job> mTitles) {
         this.mInflater = LayoutInflater.from(context);
         this.jobs = mTitles;
+    }
+
+    public void setLoadMoreStatus(int loadMoreStatus) {
+        this.loadMoreStatus = loadMoreStatus;
     }
 
     /**
@@ -85,7 +96,7 @@ public class RefreshFootAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
             FootViewHolder footViewHolder = (FootViewHolder) holder;
 
-            switch (load_more_status) {
+            switch (loadMoreStatus) {
                 case PULLUP_LOAD_MORE:
                     footViewHolder.foot_view_item_tv.setText("上拉加载更多...");
                     break;
@@ -132,7 +143,7 @@ public class RefreshFootAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
      * @param status
      */
     public void notifyDataSetChanged(int status) {
-        load_more_status = status;
+        loadMoreStatus = status;
         notifyDataSetChanged();
     }
 

@@ -1,4 +1,4 @@
-package bgg.com.myapplication.module.job.adapter;
+package bgg.com.myapplication.module.job.ui.adapter;
 
 /**
  * Created by Administrator on 2016/9/2 0002.
@@ -10,7 +10,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 

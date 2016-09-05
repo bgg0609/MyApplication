@@ -1,4 +1,4 @@
-package bgg.com.myapplication.module.job.adapter;
+package bgg.com.myapplication.module.job.ui.adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import bgg.com.myapplication.R;
-import bgg.com.myapplication.module.job.model.CityGroup;
+import bgg.com.myapplication.module.job.model.entity.CityGroup;
 
 public class CharAdapter extends BaseAdapter {
 

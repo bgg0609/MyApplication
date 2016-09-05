@@ -1,4 +1,4 @@
-package bgg.com.myapplication.module.mine.fragment;
+package bgg.com.myapplication.module.msg.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,11 +12,11 @@ import bgg.com.myapplication.common.fragment.BaseFragment;
 /**
  * Created by Administrator on 2016/9/1 0001.
  */
-public class MineFragment extends BaseFragment {
+public class MsgFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.mine_fragment, null);
+        View view = inflater.inflate(R.layout.mine_message, null);
         return view;
     }
 }

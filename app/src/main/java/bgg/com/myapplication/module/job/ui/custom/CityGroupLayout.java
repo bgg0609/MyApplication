@@ -1,4 +1,4 @@
-package bgg.com.myapplication.module.job.view;
+package bgg.com.myapplication.module.job.ui.custom;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -15,10 +15,10 @@ import android.widget.TextView;
 import java.util.List;
 
 import bgg.com.myapplication.R;
-import bgg.com.myapplication.module.job.model.City;
+import bgg.com.myapplication.module.job.model.entity.City;
 
 
-public class CityGroupView extends LinearLayout {
+public class CityGroupLayout extends LinearLayout {
 
     public interface OnItemSelectListener {
         void cityItemSelect(City city);
@@ -41,17 +41,17 @@ public class CityGroupView extends LinearLayout {
         adapter.notifyDataSetChanged();
     }
 
-    public CityGroupView(Context context) {
+    public CityGroupLayout(Context context) {
         super(context);
         init(null, 0);
     }
 
-    public CityGroupView(Context context, AttributeSet attrs) {
+    public CityGroupLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs, 0);
     }
 
-    public CityGroupView(Context context, AttributeSet attrs, int defStyle) {
+    public CityGroupLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(attrs, defStyle);
     }

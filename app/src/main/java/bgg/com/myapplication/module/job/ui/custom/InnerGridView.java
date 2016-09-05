@@ -1,4 +1,4 @@
-package bgg.com.myapplication.module.job.view;
+package bgg.com.myapplication.module.job.ui.custom;
 
 import android.content.Context;
 import android.util.AttributeSet;

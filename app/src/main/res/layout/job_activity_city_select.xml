@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <bgg.com.myapplication.module.job.view.LetterListView
+    <bgg.com.myapplication.module.job.ui.custom.LetterListView
         android:id="@+id/letterListView"
         android:layout_width="30dp"
         android:layout_height="match_parent"

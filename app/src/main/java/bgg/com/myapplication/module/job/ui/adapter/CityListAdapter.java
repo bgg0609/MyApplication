@@ -1,4 +1,4 @@
-package bgg.com.myapplication.module.job.adapter;
+package bgg.com.myapplication.module.job.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,9 +10,9 @@ import android.widget.TextView;
 import java.util.List;
 
 import bgg.com.myapplication.R;
-import bgg.com.myapplication.module.job.model.CityGroup;
-import bgg.com.myapplication.module.job.view.CityGroupView;
-import bgg.com.myapplication.module.job.view.CityGroupView.OnItemSelectListener;
+import bgg.com.myapplication.module.job.model.entity.CityGroup;
+import bgg.com.myapplication.module.job.ui.custom.CityGroupLayout;
+import bgg.com.myapplication.module.job.ui.custom.CityGroupLayout.OnItemSelectListener;
 
 /**
  * Created by Administrator on 2016/9/2 0002.
@@ -56,7 +56,7 @@ public class CityListAdapter extends BaseAdapter {
 
             convertView = LayoutInflater.from(context).inflate(R.layout.job_city_list_item, null);
             viewHolder.tvGroupName = (TextView) convertView.findViewById(R.id.tvGroupName);
-            viewHolder.cityGroupView = (CityGroupView) convertView.findViewById(R.id.CityGroupView);
+            viewHolder.cityGroupView = (CityGroupLayout) convertView.findViewById(R.id.CityGroupView);
 
             convertView.setTag(viewHolder);
         } else {
@@ -75,6 +75,6 @@ public class CityListAdapter extends BaseAdapter {
 
     class ViewHolder {
         TextView tvGroupName;
-        CityGroupView cityGroupView;
+        CityGroupLayout cityGroupView;
     }
 }

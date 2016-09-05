@@ -1,57 +1,40 @@
-package bgg.com.myapplication.module.job.activity;
+package bgg.com.myapplication.module.job.presenter;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import bgg.com.myapplication.R;
-import bgg.com.myapplication.common.OnceOnClickListener;
-import bgg.com.myapplication.common.activity.BaseActivity;
-import bgg.com.myapplication.common.customview.FlowLayout;
-import bgg.com.myapplication.module.job.view.LetterListView;
-import bgg.com.myapplication.module.job.adapter.CharAdapter;
-import bgg.com.myapplication.module.job.adapter.CityListAdapter;
-import bgg.com.myapplication.module.job.model.City;
-import bgg.com.myapplication.module.job.model.CityGroup;
-import bgg.com.myapplication.module.job.view.CityGroupView;
+import bgg.com.myapplication.module.job.model.entity.City;
+import bgg.com.myapplication.module.job.model.entity.CityGroup;
+import bgg.com.myapplication.module.job.ui.adapter.CharAdapter;
+import bgg.com.myapplication.module.job.ui.view.CitySelectView;
 
 /**
- * Created by Administrator on 2016/9/2 0002.
+ * Created by Administrator on 2016/9/5 0005.
  */
-public class CitySelectActivity extends BaseActivity {
+public class CitySelectPresenter {
     private static final int COUNT_MAX_SELECT_CITY = 3;
-    private FlowLayout flSelectCity;
-    private List<City> selectedCitys = new ArrayList<>();
+
+    private CitySelectView citySelectView;
     private List<CityGroup> cityGroups = new ArrayList<>();
-    private ListView lvCity;
-    private CityListAdapter adapter;
-    private LetterListView letterListView;
-    private LinearLayout char_layout;
-    private ListView char_list;
-    private TextView char_text;
     private List<String> letters = new ArrayList<>();
     private Map<String, ArrayList<CityGroup>> chars = new HashMap<>();
+    private List<City> selectedCitys = new ArrayList<>();
 
-    @Override
-    protected void onCreate(Bundle arg0) {
-        super.onCreate(arg0);
-        initView();
-        initData();
-        updateSelectCityLayout();
+    public List<CityGroup> getCityGroups() {
+        return cityGroups;
     }
 
-    private void initData() {
+    public CitySelectPresenter(CitySelectView citySelectView) {
+        this.citySelectView = citySelectView;
+    }
+
+    public void loadData() {
+        citySelectView.showProgress();
         //测试数据
         CityGroup cg = new CityGroup();
         cg.setName("热门城市");
@@ -245,20 +228,16 @@ public class CitySelectActivity extends BaseActivity {
         cg.setLetter("H");
         cityGroups.add(cg);
 
-        adapter = new CityListAdapter(getActivity(), cityGroups);
-        adapter.setOnItemSelectListener(new CityGroupView.OnItemSelectListener() {
-            @Override
-            public void cityItemSelect(City city) {
-                if (selectedCitys.size() < COUNT_MAX_SELECT_CITY) {
-                    if (!selectedCitys.contains(city)) {
-                        selectedCitys.add(city);
-                        updateSelectCityLayout();
-                    }
-                }
-            }
-        });
-        lvCity.setAdapter(adapter);
+        initData();
 
+        citySelectView.hideProgress();
+        citySelectView.updateItems();
+    }
+
+    /**
+     * 处理字母检索等数据
+     */
+    private void initData() {
         for (int i = 0; i < cityGroups.size(); i++) {
             String str = cityGroups.get(i).getLetter();
             if (!letters.contains(str))
@@ -276,85 +255,42 @@ public class CitySelectActivity extends BaseActivity {
         }
     }
 
-    private void initView() {
-        setContentView(R.layout.job_activity_city_select);
-        setTitle("城市选择");
-        flSelectCity = (FlowLayout) findViewById(R.id.flSelectCity);
-        lvCity = (ListView) findViewById(R.id.lvCity);
-        letterListView = (LetterListView) findViewById(R.id.letterListView);
-        char_layout = (LinearLayout) findViewById(R.id.char_layout);
-        char_list = (ListView) findViewById(R.id.char_list);
-        char_text = (TextView) findViewById(R.id.char_text);
+    public void onItemSelect(City city) {
 
-        letterListView.setOnTouchingLetterChangedListener(new LetterListViewListener());
-        lvCity.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (char_layout.isShown()) {
-                    char_layout.setVisibility(View.GONE);
-                }
-                return false;
-            }
-        });
-    }
-
-    protected void updateSelectCityLayout() {
-        if (selectedCitys != null) {
-            flSelectCity.removeAllViews();
-            for (final City tag : selectedCitys) {
-
-                View itemView = LayoutInflater.from(getActivity()).inflate(R.layout.job_city_selected_item, null);
-
-                TextView mTextView = (TextView) itemView.findViewById(R.id.tvName);
-                mTextView.setText(tag.getName());
-
-                ImageButton ibDelete = (ImageButton) itemView.findViewById(R.id.ibDelete);
-                ibDelete.setOnClickListener(new OnceOnClickListener() {
-                    @Override
-                    public void onClickOnce(View v) {
-                        selectedCitys.remove(tag);
-                        updateSelectCityLayout();
-                    }
-                });
-
-                flSelectCity.addView(itemView);
+        if (selectedCitys.size() < COUNT_MAX_SELECT_CITY) {
+            if (!selectedCitys.contains(city)) {
+                selectedCitys.add(city);
+                citySelectView.addItem(city);
             }
         }
     }
 
-    private class LetterListViewListener implements LetterListView.OnTouchingLetterChangedListener {
+    public void deleteItem(City city) {
+        selectedCitys.remove(city);
+    }
 
-        @SuppressWarnings("static-access")
-        @Override
-        public void onTouchingLetterChanged(final String s) {
+    public void letterChanged(String s) {
 
-            if (letters.contains(s)) {
-                char_text.setText(s.toUpperCase());
-                final int index = letters.indexOf(s);
-                lvCity.setSelection(index);
+        if (letters.contains(s)) {
 
-                final ArrayList<CityGroup> data = chars.get(s);
-                char_list.setAdapter(new CharAdapter(getActivity(), data));
+            citySelectView.showLetter(s.toUpperCase());
 
-                char_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            final int index = letters.indexOf(s);
+            citySelectView.setSelectionByIndex(index);
 
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            final ArrayList<CityGroup> data = chars.get(s);
+            citySelectView.setCharData(data);
 
-                        CityGroup cg = data.get(position);
-                        for (int i = 0; i < cityGroups.size(); i++) {
-                            if (cg.getName().equals(cityGroups.get(i))) {
-                                lvCity.setSelection(i);
-                            }
-                        }
-                        char_layout.setVisibility(View.GONE);
-                    }
-                });
+            citySelectView.showCharLayout();
 
-                if (!char_layout.isShown()) {
-                    char_layout.setVisibility(View.VISIBLE);
-                }
+        }
+    }
+
+    public void onCharItemSelect(CityGroup cg) {
+
+        for (int i = 0; i < cityGroups.size(); i++) {
+            if (cg.getName().equals(cityGroups.get(i))) {
+                citySelectView.setSelectionByIndex(i);
             }
         }
     }

@@ -1,4 +1,4 @@
-package bgg.com.myapplication.module.job.model;
+package bgg.com.myapplication.module.job.model.entity;
 
 import java.io.Serializable;
 

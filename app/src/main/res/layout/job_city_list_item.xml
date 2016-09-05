@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_15sp"/>
 
-    <bgg.com.myapplication.module.job.view.CityGroupView
+    <bgg.com.myapplication.module.job.ui.custom.CityGroupLayout
         android:id="@+id/CityGroupView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

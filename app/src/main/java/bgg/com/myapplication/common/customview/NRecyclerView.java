@@ -7,7 +7,8 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
-import bgg.com.myapplication.module.job.adapter.DividerItemDecoration;
+import bgg.com.myapplication.module.job.ui.adapter.DividerItemDecoration;
+
 
 /**
  * Created by dell on 2016/9/3.

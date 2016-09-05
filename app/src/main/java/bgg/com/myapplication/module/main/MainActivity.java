@@ -17,10 +17,10 @@ import bgg.com.myapplication.common.OnceOnClickListener;
 import bgg.com.myapplication.common.activity.BaseActivity;
 import bgg.com.myapplication.common.customview.BottomDialog;
 import bgg.com.myapplication.common.customview.CommonHeaderBarView;
-import bgg.com.myapplication.module.job.activity.CitySelectActivity;
-import bgg.com.myapplication.module.job.fragment.JobFragment;
-import bgg.com.myapplication.module.mine.fragment.MineFragment;
-import bgg.com.myapplication.module.msg.fragment.MsgFragment;
+import bgg.com.myapplication.module.job.ui.activity.CitySelectActivity;
+import bgg.com.myapplication.module.job.ui.fragment.JobFragment;
+import bgg.com.myapplication.module.mine.ui.fragment.MineFragment;
+import bgg.com.myapplication.module.msg.ui.fragment.MsgFragment;
 import bgg.com.myapplication.util.ToastUtils;
 
 public class MainActivity extends BaseActivity implements OnClickListener, OnPageChangeListener {
