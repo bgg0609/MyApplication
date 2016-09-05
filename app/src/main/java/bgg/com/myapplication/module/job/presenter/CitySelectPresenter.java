@@ -20,10 +20,10 @@ public class CitySelectPresenter {
     private static final int COUNT_MAX_SELECT_CITY = 3;
 
     private CitySelectView citySelectView;
-    private List<CityGroup> cityGroups = new ArrayList<>();
-    private List<String> letters = new ArrayList<>();
-    private Map<String, ArrayList<CityGroup>> chars = new HashMap<>();
-    private List<City> selectedCitys = new ArrayList<>();
+    private List<CityGroup> cityGroups = new ArrayList<CityGroup>();
+    private List<String> letters = new ArrayList<String>();
+    private Map<String, ArrayList<CityGroup>> chars = new HashMap<String, ArrayList<CityGroup>>();
+    private List<City> selectedCitys = new ArrayList<City>();
 
     public List<CityGroup> getCityGroups() {
         return cityGroups;
@@ -38,7 +38,7 @@ public class CitySelectPresenter {
         //测试数据
         CityGroup cg = new CityGroup();
         cg.setName("热门城市");
-        List<City> citys = new ArrayList<>();
+        List<City> citys = new ArrayList<City>();
         City city = new City();
         city.setName("北京");
         citys.add(city);
@@ -66,7 +66,7 @@ public class CitySelectPresenter {
 
         cg = new CityGroup();
         cg.setName("广东");
-        citys = new ArrayList<>();
+        citys = new ArrayList<City>();
         city = new City();
         city.setName("广州");
         citys.add(city);
@@ -91,7 +91,7 @@ public class CitySelectPresenter {
 
         cg = new CityGroup();
         cg.setName("广西");
-        citys = new ArrayList<>();
+        citys = new ArrayList<City>();
         city = new City();
         city.setName("广州");
         citys.add(city);
@@ -117,7 +117,7 @@ public class CitySelectPresenter {
 
         cg = new CityGroup();
         cg.setName("浙江");
-        citys = new ArrayList<>();
+        citys = new ArrayList<City>();
         city = new City();
         city.setName("杭州");
         citys.add(city);
@@ -130,7 +130,7 @@ public class CitySelectPresenter {
 
         cg = new CityGroup();
         cg.setName("湖南");
-        citys = new ArrayList<>();
+        citys = new ArrayList<City>();
         city = new City();
         city.setName("长沙");
         citys.add(city);
@@ -155,7 +155,7 @@ public class CitySelectPresenter {
 
         cg = new CityGroup();
         cg.setName("湖北");
-        citys = new ArrayList<>();
+        citys = new ArrayList<City>();
         city = new City();
         city.setName("长沙");
         citys.add(city);
@@ -180,7 +180,7 @@ public class CitySelectPresenter {
 
         cg = new CityGroup();
         cg.setName("河南");
-        citys = new ArrayList<>();
+        citys = new ArrayList<City>();
         city = new City();
         city.setName("长沙");
         citys.add(city);
@@ -205,7 +205,7 @@ public class CitySelectPresenter {
 
         cg = new CityGroup();
         cg.setName("河北");
-        citys = new ArrayList<>();
+        citys = new ArrayList<City>();
         city = new City();
         city.setName("长沙");
         citys.add(city);
@@ -248,7 +248,7 @@ public class CitySelectPresenter {
                     chars.get(str).add(cityGroups.get(i));
                 }
             } else {
-                ArrayList<CityGroup> firstNames = new ArrayList<>();
+                ArrayList<CityGroup> firstNames = new ArrayList<CityGroup>();
                 firstNames.add(cityGroups.get(i));
                 chars.put(str, firstNames);
             }

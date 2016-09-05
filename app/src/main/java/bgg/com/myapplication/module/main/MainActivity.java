@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnPag
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
 
         // 初始化底部Tab
-        mTabViews = new ArrayList<>();
+        mTabViews = new ArrayList<TextView>();
 
         TextView tvCma = (TextView) findViewById(R.id.tvJob);
         TextView tvPro = (TextView) findViewById(R.id.tvMsg);
@@ -72,7 +72,7 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnPag
         mTabViews.add(tvMine);
 
         // 初始化Fragment
-        mFragments = new ArrayList<>();
+        mFragments = new ArrayList<Fragment>();
 
         mFragments.add(new JobFragment());
         mFragments.add(new MsgFragment());
@@ -89,7 +89,7 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnPag
         super.onClickNavBarRightText();
         BottomDialog bottomDialog = new BottomDialog(getActivity());
         bottomDialog.setTitle("工资水平");
-        final List<String> options = new ArrayList<>();
+        final List<String> options = new ArrayList<String>();
         options.add("不限");
         options.add("1000~2000");
         options.add("2000~3000");

@@ -12,7 +12,7 @@ import bgg.com.myapplication.module.job.ui.view.JobFragmentView;
  */
 public class JobListPresenter {
 
-    private List<Job> jobs = new ArrayList<>();
+    private List<Job> jobs = new ArrayList<Job>();
     private JobFragmentView jobFragmentView;
 
     public List<Job> getJobs() {

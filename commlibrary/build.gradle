@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 19
+    buildToolsVersion '21.0.0'
 
     defaultConfig {
         minSdkVersion 15
@@ -21,7 +21,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.2.0'
     compile project(':volley')
     compile files('libs/glide-3.6.1.jar')
+    compile files('libs/android-support-v4.jar')
 }
