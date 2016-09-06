@@ -11,13 +11,12 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import bgg.com.commlibrary.http.NNHttpRequest;
 import bgg.com.myapplication.MyApplication;
 
 /**
  * HTTP 客户端，包含POST,GET,DELETE,PUT,PATCH请求
  */
-public class ABOHttpRequest extends NNHttpRequest {
+public class ABOHttpRequest extends HttpRequest {
 
 
 	private HttpEventListener httpEventListener;
@@ -110,11 +109,11 @@ public class ABOHttpRequest extends NNHttpRequest {
 
 	public static RequestQueue getRequestQueue(Context context) {
 
-		if (NNHttpRequest.queue == null) {
-			NNHttpRequest.queue = Volley.newRequestQueue(context, new OkHttpStack());
+		if (HttpRequest.queue == null) {
+			HttpRequest.queue = Volley.newRequestQueue(context, new OkHttpStack());
 		}
 
-		return NNHttpRequest.queue;
+		return HttpRequest.queue;
 	}
 
 	/**

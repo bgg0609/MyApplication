@@ -3,6 +3,7 @@ package bgg.com.myapplication.module.job.presenter;
 import java.util.ArrayList;
 import java.util.List;
 
+import bgg.com.myapplication.common.persenter.BasePersenter;
 import bgg.com.myapplication.module.job.model.entity.Job;
 import bgg.com.myapplication.module.job.ui.adapter.RefreshFootAdapter;
 import bgg.com.myapplication.module.job.ui.view.JobFragmentView;
@@ -10,7 +11,7 @@ import bgg.com.myapplication.module.job.ui.view.JobFragmentView;
 /**
  * Created by Administrator on 2016/9/5 0005.
  */
-public class JobListPresenter {
+public class JobListPresenter extends BasePersenter{
 
     private List<Job> jobs = new ArrayList<Job>();
     private JobFragmentView jobFragmentView;

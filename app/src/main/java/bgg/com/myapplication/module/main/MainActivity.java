@@ -24,6 +24,7 @@ import bgg.com.myapplication.module.msg.ui.fragment.MsgFragment;
 import bgg.com.myapplication.util.ToastUtils;
 
 public class MainActivity extends BaseActivity implements OnClickListener, OnPageChangeListener {
+
     public static final String TAG = "MainActivity";
 
     public final static int PAGE_JOB = 0;

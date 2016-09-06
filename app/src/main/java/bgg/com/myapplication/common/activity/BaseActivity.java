@@ -13,27 +13,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-
-import org.json.JSONException;
-
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 import bgg.com.myapplication.R;
-import bgg.com.myapplication.business.http.ABOHttpRequest;
-import bgg.com.myapplication.business.http.HttpMethod;
-import bgg.com.myapplication.business.http.Response;
 import bgg.com.myapplication.common.listener.OnceOnClickListener;
 import bgg.com.myapplication.common.customview.CommonHeaderBarView;
 
 /**
  * 所有Activity基类
- *
  */
 @SuppressLint("NewApi")
-public class BaseActivity extends FragmentActivity implements ABOHttpRequest.HttpEventListener {
+public class BaseActivity extends FragmentActivity {
 
     private ProgressBar loading;
 
@@ -45,8 +33,6 @@ public class BaseActivity extends FragmentActivity implements ABOHttpRequest.Htt
     // 网络请求失败后，点击刷新的按钮
     private Button ReflashLayoutBtn;
     private LinearLayout contentLayout;
-
-    private Set<ABOHttpRequest> requestQueue = new HashSet<ABOHttpRequest>();
 
     public CommonHeaderBarView getHeaderBarView() {
         return headerBarView;
@@ -82,21 +68,21 @@ public class BaseActivity extends FragmentActivity implements ABOHttpRequest.Htt
         headerBarView.setRightOnClick2(onRightIconClick2);
     }
 
-    OnClickListener onRightIconClick1=  new OnceOnClickListener() {
+    OnClickListener onRightIconClick1 = new OnceOnClickListener() {
         @Override
         public void onClickOnce(View v) {
             onClickNavBarRightIcon1();
         }
     };
 
-    OnClickListener onRightTextClick=  new OnceOnClickListener() {
+    OnClickListener onRightTextClick = new OnceOnClickListener() {
         @Override
         public void onClickOnce(View v) {
             onClickNavBarRightText();
         }
     };
 
-    OnClickListener onRightIconClick2=  new OnceOnClickListener() {
+    OnClickListener onRightIconClick2 = new OnceOnClickListener() {
         @Override
         public void onClickOnce(View v) {
             onClickNavBarRightIcon2();
@@ -107,13 +93,13 @@ public class BaseActivity extends FragmentActivity implements ABOHttpRequest.Htt
     @Override
     public void setContentView(int layoutResID) {
         View contentView = LayoutInflater.from(this).inflate(layoutResID, contentLayout, false);
-        LinearLayout ll=(LinearLayout) findViewById(R.id.layout_content);
+        LinearLayout ll = (LinearLayout) findViewById(R.id.layout_content);
         ll.addView(contentView);
 
         ReflashLayout = findViewById(R.id.ReflashLayout);
         ReflashLayoutBtn = (Button) findViewById(R.id.ReflashLayoutBtn);
 
-        loading=(ProgressBar) findViewById(R.id.loading);
+        loading = (ProgressBar) findViewById(R.id.loading);
     }
 
     @Override
@@ -248,96 +234,26 @@ public class BaseActivity extends FragmentActivity implements ABOHttpRequest.Htt
 
     @Override
     protected void onDestroy() {
-        cancelHttpRequest();
         super.onDestroy();
     }
 
-
-    public void cancelHttpRequest() {
-        Iterator<ABOHttpRequest> iter = requestQueue.iterator();
-
-        while (iter.hasNext()) {
-            ABOHttpRequest request = iter.next();
-            request.cancelRequest();
-        }
-
-    }
-
     /**
-     * 取消某个请求
-     *
-     * @param webAPI
+     * 设置导航栏右侧第一个图标点击事件
      */
-    public void cancelHttpRequest(String webAPI) {
-        Iterator<ABOHttpRequest> iter = requestQueue.iterator();
-
-        while (iter.hasNext()) {
-            ABOHttpRequest request = iter.next();
-
-            if (request.getWebAPI().equals(webAPI)) {
-                request.cancelRequest();
-                requestQueue.remove(request);
-                break;
-            }
-        }
-
-    }
-
-
-    /**
-     * Http请求以及响应相关
-     */
-
-    public void startHttpRequest(HttpMethod method, String webAPI, Map<String, Object> params) {
-        ABOHttpRequest httpRequest = new ABOHttpRequest(this, webAPI);
-        httpRequest.setHttpEventListener(this);
-
-        if (params!=null) {
-            Iterator<String> keys = params.keySet().iterator();
-
-            while (keys.hasNext()) {
-                String key = keys.next();
-
-                try {
-                    httpRequest.getParams().put(key, params.get(key));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        requestQueue.add(httpRequest);
-        httpRequest.requestWithMethod(method.getValue());
-    }
-
-    @Override
-    public void requestDidStart() {
-        showLoadingBar(true);
-    }
-
-    @Override
-    public void requestDidSuccessful(Response response) {
-        cancelHttpRequest(response.getWebAPI());
-        showLoadingBar(false);
-    }
-
-    @Override
-    public void requestDidError(Response response) {
-        showLoadingBar(false);
-        cancelHttpRequest(response.getWebAPI());
-    }
-
-    /**设置导航栏右侧第一个图标点击事件*/
     public void onClickNavBarRightIcon1() {
 
     }
 
-    /**设置导航栏右侧文字点击事件*/
+    /**
+     * 设置导航栏右侧文字点击事件
+     */
     public void onClickNavBarRightText() {
 
     }
 
-    /**设置导航栏右侧第二个图标点击事件*/
+    /**
+     * 设置导航栏右侧第二个图标点击事件
+     */
     public void onClickNavBarRightIcon2() {
 
     }

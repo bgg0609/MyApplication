@@ -106,4 +106,18 @@ public class JobFragment extends BaseFragment implements JobFragmentView {
         adapter.notifyDataSetChanged(state);
     }
 
+    @Override
+    public void onDestory() {
+        presenter.onDestory();
+    }
+
+
+    @Override
+    public void showLoading() {
+    }
+
+    @Override
+    public void closeLoading() {
+    }
+
 }
