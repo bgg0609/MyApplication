@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bgg.com.myapplication.R;
-import bgg.com.myapplication.common.OnceOnClickListener;
+import bgg.com.myapplication.common.listener.OnceOnClickListener;
 import bgg.com.myapplication.common.activity.BaseActivity;
 import bgg.com.myapplication.common.customview.BottomDialog;
 import bgg.com.myapplication.common.customview.CommonHeaderBarView;

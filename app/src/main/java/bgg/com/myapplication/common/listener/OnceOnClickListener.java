@@ -1,4 +1,4 @@
-package bgg.com.myapplication.common;
+package bgg.com.myapplication.common.listener;
 
 import android.view.View;
 import android.view.View.OnClickListener;

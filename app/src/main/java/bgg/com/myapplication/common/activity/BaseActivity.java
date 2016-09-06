@@ -25,7 +25,7 @@ import bgg.com.myapplication.R;
 import bgg.com.myapplication.business.http.ABOHttpRequest;
 import bgg.com.myapplication.business.http.HttpMethod;
 import bgg.com.myapplication.business.http.Response;
-import bgg.com.myapplication.common.OnceOnClickListener;
+import bgg.com.myapplication.common.listener.OnceOnClickListener;
 import bgg.com.myapplication.common.customview.CommonHeaderBarView;
 
 /**

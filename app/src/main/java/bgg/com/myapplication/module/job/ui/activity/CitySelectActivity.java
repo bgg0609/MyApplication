@@ -11,12 +11,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import bgg.com.myapplication.R;
-import bgg.com.myapplication.common.OnceOnClickListener;
+import bgg.com.myapplication.common.listener.OnceOnClickListener;
 import bgg.com.myapplication.common.activity.BaseActivity;
 import bgg.com.myapplication.common.customview.FlowLayout;
 import bgg.com.myapplication.module.job.presenter.CitySelectPresenter;
