@@ -2,8 +2,13 @@ package bgg.com.myapplication.module.job.presenter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import bgg.com.myapplication.business.http.HttpMethod;
+import bgg.com.myapplication.business.http.Response;
+import bgg.com.myapplication.business.http.WebAPI;
 import bgg.com.myapplication.common.persenter.BasePersenter;
+import bgg.com.myapplication.module.job.model.JobModel;
 import bgg.com.myapplication.module.job.model.entity.Job;
 import bgg.com.myapplication.module.job.ui.adapter.RefreshFootAdapter;
 import bgg.com.myapplication.module.job.ui.view.JobFragmentView;
@@ -50,5 +55,32 @@ public class JobListPresenter extends BasePersenter{
             job.setName("职位" + i);
             jobs.add(job);
         }
+
+        //使用http下载代码如下
+        Map<String, Object> params = JobModel.buildGetJobListParams();
+        startHttpRequest(HttpMethod.GET, WebAPI.GET_JOB_LIST_URL, params);
+    }
+
+    @Override
+    public void requestDidSuccessful(Response response) {
+        super.requestDidSuccessful(response);
+        //返回成功，判断response
+        if (response.matchAPI(HttpMethod.GET.getValue(),WebAPI.GET_JOB_LIST_URL )){
+            //todo 处理数据逻辑
+        }
+    }
+
+    @Override
+    public void requestDidError(Response response) {
+        super.requestDidError(response);
+        //返回失败，判断response
+        if (response.matchAPI(HttpMethod.GET.getValue(),WebAPI.GET_JOB_LIST_URL )){
+            //todo 处理数据逻辑
+        }
+    }
+
+    @Override
+    public void requestDidStart() {
+        super.requestDidStart();
     }
 }

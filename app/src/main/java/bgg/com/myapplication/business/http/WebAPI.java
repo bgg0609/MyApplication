@@ -12,6 +12,6 @@ public class WebAPI {
     /**
      * 获取GEOS信息
      */
-    public static String GET_GEOS_URL = "/data/sk/101010100.html";
+    public static String GET_JOB_LIST_URL = "/data/sk/101010100.html";
 
 }
