@@ -15,14 +15,14 @@ import java.util.List;
 
 /**
  * HTTP请求相关的一个工具
- * 
+ *
  */
 public class HttpUtils {
 	private static final String TAG = "HTTP";
 
 	/**
 	 * 输入日志
-	 * 
+	 *
 	 * @param logStr
 	 */
 	public static void printLog(Object logStr) {
@@ -41,7 +41,7 @@ public class HttpUtils {
 
 	/**
 	 * 将JSONObject参数转换成Get请求的参数格式
-	 * 
+	 *
 	 * @param mJsonObject
 	 * @return
 	 */

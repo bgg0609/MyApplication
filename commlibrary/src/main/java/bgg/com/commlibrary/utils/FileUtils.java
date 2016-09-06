@@ -17,7 +17,7 @@ import java.io.OutputStream;
 public class FileUtils {
 	/**
 	 * 创建新的文件
-	 * 
+	 *
 	 * @param dirPath
 	 *            文件目录
 	 * @param name
@@ -28,26 +28,26 @@ public class FileUtils {
 		file.createNewFile();
 		return file;
 	}
-	
-	public static byte[] getBytesFromFile(File f) {   
-        if (f == null) {   
-            return null;   
-        }   
-        try {   
-            FileInputStream stream = new FileInputStream(f);   
-            ByteArrayOutputStream out = new ByteArrayOutputStream(1000);   
-            byte[] b = new byte[1000];   
-            int n;   
-            while ((n = stream.read(b)) != -1) {  
-                out.write(b, 0, n);   
-               }  
-            stream.close();   
-            out.close();   
-            return out.toByteArray();   
-        } catch (IOException e) {   
-        }   
-        return null;   
-    }   
+
+	public static byte[] getBytesFromFile(File f) {
+        if (f == null) {
+            return null;
+        }
+        try {
+            FileInputStream stream = new FileInputStream(f);
+            ByteArrayOutputStream out = new ByteArrayOutputStream(1000);
+            byte[] b = new byte[1000];
+            int n;
+            while ((n = stream.read(b)) != -1) {
+                out.write(b, 0, n);
+               }
+            stream.close();
+            out.close();
+            return out.toByteArray();
+        } catch (IOException e) {
+        }
+        return null;
+    }
 
 	public static File createFileInSDCard(String name) throws Exception {
 		int index = name.lastIndexOf(File.separator);
@@ -102,7 +102,7 @@ public class FileUtils {
 
 	/**
 	 * 保存文件
-	 * 
+	 *
 	 * @param bm
 	 * @param fileName
 	 * @throws IOException
@@ -114,7 +114,7 @@ public class FileUtils {
 		if (!dirFile.exists()) {
 			dirFile.mkdir();
 		}
-		
+
 		File myCaptureFile = new File(path + fileName);
 
 		if (!myCaptureFile.exists()) {
@@ -125,11 +125,11 @@ public class FileUtils {
 		}
 
 	}
-	
-	
+
+
 	/**
 	 * 测试代码
-	 * 
+	 *
 	 * @param filename
 	 * @param des
 	 * @return

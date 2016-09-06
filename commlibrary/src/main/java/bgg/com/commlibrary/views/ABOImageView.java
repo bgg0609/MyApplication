@@ -81,7 +81,4 @@ public class ABOImageView extends ImageView {
 		request.into(this);
 	}
 	
-	public void loadFinish(Bitmap bitmap) {
-
-	}
 }
