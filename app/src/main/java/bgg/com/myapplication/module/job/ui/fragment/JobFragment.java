@@ -9,14 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
 import bgg.com.myapplication.R;
 import bgg.com.myapplication.common.customview.NRecyclerView;
 import bgg.com.myapplication.common.customview.NSwipeRefreshLayout;
 import bgg.com.myapplication.common.fragment.BaseFragment;
 import bgg.com.myapplication.module.job.presenter.JobListPresenter;
-import bgg.com.myapplication.module.job.ui.adapter.RefreshFootAdapter;
+import bgg.com.myapplication.module.job.ui.adapter.JobListAdapter;
 import bgg.com.myapplication.module.job.ui.view.JobFragmentView;
 import bgg.com.myapplication.util.ToastUtils;
 
@@ -26,7 +24,7 @@ import bgg.com.myapplication.util.ToastUtils;
 public class JobFragment extends BaseFragment implements JobFragmentView {
 
     private NRecyclerView nRecyclerView;
-    private RefreshFootAdapter adapter;
+    private JobListAdapter adapter;
     private NSwipeRefreshLayout swipeRefreshLayout;
 
     private int lastVisibleItem;
@@ -41,8 +39,8 @@ public class JobFragment extends BaseFragment implements JobFragmentView {
 
         presenter = new JobListPresenter(this);
 
-        adapter = new RefreshFootAdapter(getActivity(), presenter.getJobs());
-        adapter.setLoadMoreStatus(RefreshFootAdapter.LOADING_MORE);
+        adapter = new JobListAdapter(getActivity(), presenter.getJobs());
+        adapter.setLoadMoreStatus(JobListAdapter.LOADING_MORE);
         nRecyclerView.setAdapter(adapter);
 
         presenter.refreshData();
@@ -87,7 +85,7 @@ public class JobFragment extends BaseFragment implements JobFragmentView {
 
     @Override
     public void showLoadMoreProgress() {
-        adapter.notifyDataSetChanged(RefreshFootAdapter.LOADING_MORE);
+        adapter.notifyDataSetChanged(JobListAdapter.LOADING_MORE);
     }
 
     @Override

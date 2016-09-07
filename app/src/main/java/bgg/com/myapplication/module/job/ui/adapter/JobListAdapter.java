@@ -16,7 +16,7 @@ import bgg.com.myapplication.module.job.model.entity.Job;
 /**
  * Created by Administrator on 2016/9/2 0002.
  */
-public class RefreshFootAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class JobListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     //上拉加载更多
     public static final int PULLUP_LOAD_MORE = 0;
@@ -38,7 +38,7 @@ public class RefreshFootAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private static final int TYPE_FOOTER = 2;  //顶部FootView
 
 
-    public RefreshFootAdapter(Context context, List<Job> mTitles) {
+    public JobListAdapter(Context context, List<Job> mTitles) {
         this.mInflater = LayoutInflater.from(context);
         this.jobs = mTitles;
     }

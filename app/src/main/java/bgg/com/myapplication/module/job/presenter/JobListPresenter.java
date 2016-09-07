@@ -10,7 +10,7 @@ import bgg.com.myapplication.business.http.WebAPI;
 import bgg.com.myapplication.common.persenter.BasePersenter;
 import bgg.com.myapplication.module.job.model.JobModel;
 import bgg.com.myapplication.module.job.model.entity.Job;
-import bgg.com.myapplication.module.job.ui.adapter.RefreshFootAdapter;
+import bgg.com.myapplication.module.job.ui.adapter.JobListAdapter;
 import bgg.com.myapplication.module.job.ui.view.JobFragmentView;
 
 /**
@@ -40,9 +40,9 @@ public class JobListPresenter extends BasePersenter{
         getJobList();
         //模拟数据加载完成后底部显示没有更多数据
         if (jobs.size() < 60) {
-            jobFragmentView.updateItems(RefreshFootAdapter.PULLUP_LOAD_MORE);
+            jobFragmentView.updateItems(JobListAdapter.PULLUP_LOAD_MORE);
         } else if (jobs.size() >= 60) {
-            jobFragmentView.updateItems(RefreshFootAdapter.NO_MORE_DATA);
+            jobFragmentView.updateItems(JobListAdapter.NO_MORE_DATA);
         }
     }
 

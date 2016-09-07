@@ -13,8 +13,9 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import bgg.com.commlibrary.views.ABOImageView;
-
+/**
+ * 远程加载的图片处理成圆角矩形或者圆形
+ */
 public class RoundedImageView extends ABOImageView {
 
 	public static final String TAG = "RoundedImageView";
@@ -276,6 +277,10 @@ public class RoundedImageView extends ABOImageView {
 		return isOval;
 	}
 
+	/**
+	 * 设置是否为圆形（默认则为圆角矩形）
+	 * @param oval
+     */
 	public void setOval(boolean oval) {
 		isOval = oval;
 		updateDrawableAttrs();
