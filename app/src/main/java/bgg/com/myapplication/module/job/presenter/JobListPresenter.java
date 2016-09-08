@@ -57,8 +57,8 @@ public class JobListPresenter extends BasePersenter{
         }
 
         //使用http下载代码如下
-        Map<String, Object> params = JobModel.buildGetJobListParams();
-        startHttpRequest(HttpMethod.GET, WebAPI.GET_JOB_LIST_URL, params);
+//        Map<String, Object> params = JobModel.buildGetJobListParams();
+        startHttpRequest(HttpMethod.GET, WebAPI.GET_JOB_LIST_URL, null);
     }
 
     @Override

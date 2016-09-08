@@ -13,7 +13,6 @@
             android:id="@+id/lvJob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@color/list_divider_color"
             android:scrollbars="vertical" />
     </bgg.com.myapplication.common.customview.NSwipeRefreshLayout>
 

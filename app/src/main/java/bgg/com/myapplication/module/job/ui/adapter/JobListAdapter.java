@@ -57,19 +57,28 @@ public class JobListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //进行判断显示类型，来创建返回不同的View
         if (viewType == TYPE_BLANK) {
+
             View view = mInflater.inflate(R.layout.job_blank_item, parent, false);
             BlankViewHolder blankViewHolder = new BlankViewHolder(view);
+
             return blankViewHolder;
+
         } else if (viewType == TYPE_ITEM) {
+
             View view = mInflater.inflate(R.layout.job_list_item, parent, false);
             ItemViewHolder itemViewHolder = new ItemViewHolder(view);
+
             return itemViewHolder;
+
         } else if (viewType == TYPE_FOOTER) {
+
             View foot_view = mInflater.inflate(R.layout.recycler_load_more_layout, parent, false);
             //这边可以做一些属性设置，甚至事件监听绑定
             //view.setBackgroundColor(Color.RED);
             FootViewHolder footViewHolder = new FootViewHolder(foot_view);
+
             return footViewHolder;
+
         }
         return null;
     }
@@ -81,6 +90,7 @@ public class JobListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      * @param position
      */
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
         if (holder instanceof ItemViewHolder) {
 
             Job job = jobs.get(position);
@@ -92,6 +102,7 @@ public class JobListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             ((ItemViewHolder) holder).ivAvatar.loadImage(job.getAvatar());
 
             holder.itemView.setTag(position);
+
         } else if (holder instanceof FootViewHolder) {
 
             FootViewHolder footViewHolder = (FootViewHolder) holder;

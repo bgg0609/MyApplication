@@ -7,8 +7,6 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
-import bgg.com.myapplication.module.job.ui.adapter.DividerItemDecoration;
-
 
 /**
  * Created by dell on 2016/9/3.
@@ -36,11 +34,10 @@ public class NRecyclerView extends RecyclerView {
 
     private void initStyle() {
         //添加分隔线
-        addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL_LIST));
+        addItemDecoration(new DividerItemDecoration(getContext(), OrientationHelper.VERTICAL));
     }
 
     public void setOrientation(int orientation) {
-
         linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
         setLayoutManager(linearLayoutManager);
     }
