@@ -13,7 +13,7 @@ public class Response {
 	private Map data;
 	private String msg;
 	private String webAPI;
-	private int method;
+	private HttpMethod method;
 	private Object extObject;
 	private JSONObject result;
 
@@ -34,11 +34,11 @@ public class Response {
 		this.extObject = extObject;
 	}
 
-	public int getMethod() {
+	public HttpMethod getMethod() {
 		return method;
 	}
 
-	public void setMethod(int method) {
+	public void setMethod(HttpMethod method) {
 		this.method = method;
 	}
 
@@ -74,9 +74,9 @@ public class Response {
 		this.webAPI = webAPI;
 	}
 
-	public boolean matchAPI(int requestMethod, String api) {
+	public boolean matchAPI(HttpMethod httpMethod, String api) {
 
-		if (webAPI.equalsIgnoreCase(api) && method == requestMethod) {
+		if (webAPI.equalsIgnoreCase(api) && method == httpMethod) {
 			return true;
 		}
 

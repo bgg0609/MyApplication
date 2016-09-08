@@ -10,6 +10,8 @@ import java.util.Map;
 public class JobModel {
 
     public static Map<String, Object> buildGetJobListParams() {
-        return new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("geoVersion",0);
+        return params;
     }
 }

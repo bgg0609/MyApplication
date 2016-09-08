@@ -19,115 +19,113 @@ import bgg.com.myapplication.MyApplication;
 public class ABOHttpRequest extends HttpRequest {
 
 
-	private HttpEventListener httpEventListener;
+    private HttpEventListener httpEventListener;
 
+    public ABOHttpRequest(Context context, String host, String webAPI) {
+        super(context, host, webAPI);
+        initParams();
+    }
 
-	public ABOHttpRequest(Context context, String host, String webAPI) {
-		super(context, host, webAPI);
-		initParams();
-	}
-	public ABOHttpRequest(Context context, String webAPI) {
-		super(context, WebAPI.HOST, webAPI);
-		initParams();
-	}
+    public ABOHttpRequest(Context context, String webAPI) {
+        super(context, WebAPI.HOST, webAPI);
+        initParams();
+    }
 
+    public ABOHttpRequest(String webAPI) {
+        super(MyApplication.getInstance(), WebAPI.HOST, webAPI);
+        initParams();
+    }
 
-	public ABOHttpRequest(String webAPI) {
-		super(MyApplication.getInstance(), WebAPI.HOST, webAPI);
-		initParams();
-	}
+    private void initParams() {
+        ConcurrentHashMap<String, Object> paramMap = new ConcurrentHashMap<String, Object>();
+        CommonParamUtil.builderCommonParam(getContext(), paramMap);
+        setParams(new JSONObject(paramMap));
+    }
 
-	private void initParams() {
-		ConcurrentHashMap<String, Object> paramMap = new ConcurrentHashMap<String, Object>();
-		CommonParamUtil.builderCommonParam(getContext(), paramMap);
-		setParams(new JSONObject(paramMap));
-	}
+    @Override
+    public void requestWithMethod(HttpMethod method) {
+        super.requestWithMethod(method);
+    }
 
-	@Override
-	public void requestWithMethod(int method) {
-		super.requestWithMethod(method);
-	}
+    /**
+     * 取消请求
+     */
+    public void cancelRequest() {
+        this.httpEventListener = null;
+        super.cancelRequest();
+    }
 
-	/**
-	 * 取消请求
-	 */
-	public void cancelRequest() {
-		this.httpEventListener = null;
-		super.cancelRequest();
-	}
+    public HttpEventListener getHttpEventListener() {
+        return httpEventListener;
+    }
 
-	public HttpEventListener getHttpEventListener() {
-		return httpEventListener;
-	}
+    public void setHttpEventListener(HttpEventListener httpEventListener) {
+        this.httpEventListener = httpEventListener;
+    }
 
-	public void setHttpEventListener(HttpEventListener httpEventListener) {
-		this.httpEventListener = httpEventListener;
-	}
+    @Override
+    public void requestDidStart() {
+        if (httpEventListener != null) {
+            httpEventListener.requestDidStart();
+        }
+    }
 
-	@Override
-	public void requestDidStart() {
-		if (httpEventListener != null) {
-			httpEventListener.requestDidStart();
-		}
-	}
+    @Override
+    public void requestDidSuccessful(HttpMethod method, JSONObject response) {
+        // 判断是否有实现监听
+        if (httpEventListener != null) {
+            Response rep = JSON.parseObject(response.toString(), Response.class);
+            // 转换成基本结构
+            rep.setWebAPI((String) getRequest().getTag());
+            rep.setMethod(method);
 
-	@Override
-	public void requestDidSuccessful(int method, JSONObject response) {
-		// 判断是否有实现监听
-		if (httpEventListener != null) {
-			Response rep= JSON.parseObject(response.toString(),Response.class);
-			// 转换成基本结构
-			rep.setWebAPI((String) getRequest().getTag());
-			rep.setMethod(method);
+            if (rep.isOk()) {//  判断是否成功执行
+                httpEventListener.requestDidSuccessful(rep);
+            } else {// 失败了，可以统一在此处理一些事儿
+                StringBuffer msg = new StringBuffer(rep.getMsg());
+                msg.append("(");
+                msg.append(rep.getCode());
+                msg.append(")");
 
-			if (rep.isOk()) {//  判断是否成功执行
-				httpEventListener.requestDidSuccessful(rep);
-			} else {// 失败了，可以统一在此处理一些事儿
-				StringBuffer msg = new StringBuffer(rep.getMsg());
-				msg.append("(");
-				msg.append(rep.getCode());
-				msg.append(")");
+                httpEventListener.requestDidError(rep);
+            }
 
-				httpEventListener.requestDidError(rep);
-			}
+        }
 
-		}
+    }
 
-	}
+    @Override
+    public void requestDidError(HttpMethod method, int code, String errorMsg) {
+        if (httpEventListener != null) {
+            Response rep = new Response();
+            rep.setWebAPI((String) getRequest().getTag());
+            rep.setMsg(errorMsg);
+            rep.setMethod(method);
 
-	@Override
-	public void requestDidError(int method, int code, String errorMsg) {
-		if (httpEventListener != null) {
-			Response rep = new Response();
-			rep.setWebAPI((String) getRequest().getTag());
-			rep.setMsg(errorMsg);
-			rep.setMethod(method);
+            httpEventListener.requestDidError(rep);
+        }
+    }
 
-			httpEventListener.requestDidError(rep);
-		}
-	}
+    public static RequestQueue getRequestQueue(Context context) {
 
-	public static RequestQueue getRequestQueue(Context context) {
+        if (HttpRequest.queue == null) {
+            HttpRequest.queue = Volley.newRequestQueue(context, new OkHttpStack());
+        }
 
-		if (HttpRequest.queue == null) {
-			HttpRequest.queue = Volley.newRequestQueue(context, new OkHttpStack());
-		}
+        return HttpRequest.queue;
+    }
 
-		return HttpRequest.queue;
-	}
+    /**
+     * @author robert
+     *         <p/>
+     *         HTTP请求回调接口
+     */
+    public interface HttpEventListener {
+        public void requestDidStart();
 
-	/**
-	 * 
-	 * @author robert
-	 *
-	 *         HTTP请求回调接口
-	 */
-	public interface HttpEventListener {
-		public void requestDidStart();
+        public void requestDidSuccessful(Response response);
 
-		public void requestDidSuccessful(Response response);
-
-		public void requestDidError(Response response);
-	}
+        public void requestDidError(Response response);
+    }
 
 }

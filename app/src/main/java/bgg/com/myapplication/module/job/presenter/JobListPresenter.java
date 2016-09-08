@@ -12,11 +12,12 @@ import bgg.com.myapplication.module.job.model.JobModel;
 import bgg.com.myapplication.module.job.model.entity.Job;
 import bgg.com.myapplication.module.job.ui.adapter.JobListAdapter;
 import bgg.com.myapplication.module.job.ui.view.JobFragmentView;
+import bgg.com.myapplication.util.ToastUtils;
 
 /**
  * Created by Administrator on 2016/9/5 0005.
  */
-public class JobListPresenter extends BasePersenter{
+public class JobListPresenter extends BasePersenter {
 
     private List<Job> jobs = new ArrayList<Job>();
     private JobFragmentView jobFragmentView;
@@ -56,17 +57,18 @@ public class JobListPresenter extends BasePersenter{
             jobs.add(job);
         }
 
-        //使用http下载代码如下
-//        Map<String, Object> params = JobModel.buildGetJobListParams();
-        startHttpRequest(HttpMethod.GET, WebAPI.GET_JOB_LIST_URL, null);
+        //模拟调用http
+        Map<String, Object> params = JobModel.buildGetJobListParams();
+        startHttpRequest(HttpMethod.GET, WebAPI.GET_JOB_LIST_URL, params);
     }
 
     @Override
     public void requestDidSuccessful(Response response) {
         super.requestDidSuccessful(response);
         //返回成功，判断response
-        if (response.matchAPI(HttpMethod.GET.getValue(),WebAPI.GET_JOB_LIST_URL )){
-            //todo 处理数据逻辑
+        if (response.matchAPI(HttpMethod.GET, WebAPI.GET_JOB_LIST_URL)) {
+            //todo 处理数据逻辑,这里暂时显示接口返回的msg提示信息
+            jobFragmentView.showMessage(response.getMsg());
         }
     }
 
@@ -74,7 +76,7 @@ public class JobListPresenter extends BasePersenter{
     public void requestDidError(Response response) {
         super.requestDidError(response);
         //返回失败，判断response
-        if (response.matchAPI(HttpMethod.GET.getValue(),WebAPI.GET_JOB_LIST_URL )){
+        if (response.matchAPI(HttpMethod.GET, WebAPI.GET_JOB_LIST_URL)) {
             //todo 处理数据逻辑
         }
     }

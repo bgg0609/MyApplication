@@ -34,9 +34,10 @@ public class BasePersenter implements ABOHttpRequest.HttpEventListener {
     public void requestDidError(Response response) {
     }
 
-    public void onDestory(){
+    public void onDestory() {
         cancelHttpRequest();
     }
+
     /**
      * Http请求以及响应相关
      */
@@ -63,7 +64,7 @@ public class BasePersenter implements ABOHttpRequest.HttpEventListener {
         }
 
         requestQueue.add(httpRequest);
-        httpRequest.requestWithMethod(method.getValue());
+        httpRequest.requestWithMethod(method);
     }
 
     /**
@@ -85,6 +86,7 @@ public class BasePersenter implements ABOHttpRequest.HttpEventListener {
         }
 
     }
+
     public void cancelHttpRequest() {
         Iterator<ABOHttpRequest> iter = requestQueue.iterator();
 
